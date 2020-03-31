@@ -1,0 +1,3 @@
+[console_scripts]
+checkSingleton = singletonByVlad.core:checkWork
+
