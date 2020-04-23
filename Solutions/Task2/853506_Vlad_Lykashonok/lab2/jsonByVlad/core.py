@@ -11,7 +11,7 @@ def lex(string):
         if ' \n\t'.find(string[i]) != -1:
             i+=1
             continue
-        elif '\'\"'.find(string[i]) != -1:
+        if '\'\"'.find(string[i]) != -1:
             str_flag = True
             i+=1
             while '\'\"'.find(string[i]) == -1:
@@ -101,7 +101,7 @@ def parse(tokens):
     else:
         return t, tokens[1:]
 
-def to_json(string):
+def from_json(string):
     # print('str from jsonparse',string)
     tokens = lex(string)
     # print('tokens - ',tokens)
@@ -158,7 +158,7 @@ def get_object(obj):
             string += ', '
     return string + '}'
 
-def from_json(obj):
+def to_json(obj):
     return get_object(obj)
 
 # For coverage

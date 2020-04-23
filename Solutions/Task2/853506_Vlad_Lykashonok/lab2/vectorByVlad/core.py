@@ -38,7 +38,6 @@ class VectorByVlad:
         elif type(other) is float or type(other) is int:
             self.vector_values = list(map(lambda a: a * int(other), self.vector_values))
             return self
-        else: raise ValueError('Can operate with VectorByVlad vector or scalars only')
 
     def __imul__(self, other):
         if isinstance(other, VectorByVlad): raise ValueError('Can operate with scalars only')

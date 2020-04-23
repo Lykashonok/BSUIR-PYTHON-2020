@@ -61,36 +61,36 @@ def external_sort(FILE_TO_SORT = "numbers.txt", FILE_TO_OUTPUT = "output.txt",BU
                 buffer = file_to_sort.read(BUFFER_SIZE)
             
             # merging every pair of files in new file
-            fileIndex = 0
+            file_index = 0
             sorted_file_numbers = []
             while len(tmp_files) != 1:
                 merged_file = tempfile.NamedTemporaryFile(mode="w+", prefix="python_lab_temp_", suffix=".txt")
                 
-                if fileIndex == len(tmp_files) - 1: fileIndex = 0
-                first_number = (tmp_files[fileIndex].readline())
-                second_number = (tmp_files[fileIndex + 1].readline())
+                if file_index == len(tmp_files) - 1: file_index = 0
+                first_number = (tmp_files[file_index].readline())
+                second_number = (tmp_files[file_index + 1].readline())
                 while first_number or second_number:
                     if first_number == '':
                         merged_file.write('{}'.format(second_number))
-                        second_number = tmp_files[fileIndex + 1].readline()
+                        second_number = tmp_files[file_index + 1].readline()
                     elif second_number == '':
                         merged_file.write('{}'.format(first_number))
-                        first_number = tmp_files[fileIndex].readline()
+                        first_number = tmp_files[file_index].readline()
                     elif int(first_number) > int(second_number):
                         merged_file.write('{}'.format(second_number))
-                        second_number = tmp_files[fileIndex + 1].readline()
+                        second_number = tmp_files[file_index + 1].readline()
                     else:
                         merged_file.write('{}'.format(first_number))
-                        first_number = tmp_files[fileIndex].readline()
+                        first_number = tmp_files[file_index].readline()
 
                 merged_file.seek(0)
-                tmp_files.remove(tmp_files[fileIndex+1])
-                tmp_files[fileIndex] = merged_file
+                tmp_files.remove(tmp_files[file_index+1])
+                tmp_files[file_index] = merged_file
 
-                if fileIndex == len(tmp_files) - 1: 
-                    fileIndex = 0
+                if file_index == len(tmp_files) - 1: 
+                    file_index = 0
                 else: 
-                    fileIndex += 1
+                    file_index += 1
             tmp_files[0].seek(0)
 
             line = tmp_files[0].readline()
