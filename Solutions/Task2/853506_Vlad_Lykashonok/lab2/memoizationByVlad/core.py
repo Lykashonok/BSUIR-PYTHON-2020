@@ -1,8 +1,8 @@
 def memoize(f):
     memory = {}
-    def wrapper(*args):
+    def wrapper(*args, **kwargs):
         if args not in memory:            
-            memory[args] = f(*args)
+            memory[args] = f(*args, **kwargs)
         return memory[args]
     return wrapper
 
